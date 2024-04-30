@@ -1,0 +1,5 @@
+node_modules/
+.env
+.idea/
+.gitignore
+package-lock.json
