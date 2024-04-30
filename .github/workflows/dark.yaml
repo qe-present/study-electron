@@ -5,14 +5,13 @@ permissions:
   contents: write
 jobs:
   dark-build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
+    runs-on: windows-latest
     steps:
+      - name: 获取node版本
+        run: node -v
       - name: 读取仓库代码
         uses: actions/checkout@v4
-      - name : 安装依赖
+      - name: 安装依赖
         run: |
           cd 01-Dark-Mode
           npm install
