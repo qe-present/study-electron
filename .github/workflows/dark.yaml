@@ -19,7 +19,7 @@ jobs:
       - name: 打包
         run: |
           cd 01-Dark-Mode
-          npm run build
+          npm run make
       - name: 出现artifacts
         uses: actions/upload-artifact@v4
         with:
