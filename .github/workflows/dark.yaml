@@ -11,9 +11,6 @@ jobs:
     steps:
       - name: 导入代码
         uses: actions/checkout@v4
-      - name: 安装 rsync
-        run: |
-            choco install rsync -y
 
       - name: 准备Node环境
         uses: actions/setup-node@v4
@@ -28,22 +25,12 @@ jobs:
         run: |
           cd 01-Dark-Mode
           npm run make
-      - name: 检查打包结果
-        run: |
-          dir D:/a/study-electron/study-electron/01-Dark-Mode/out
-          dir D:/a/study-electron/study-electron/01-Dark-Mode/out/make/
-      - name: 部署到新的分支 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: 01-Dark-Mode/out/dark-mode-win32-x64
-          branch: 01-build
 
       - name: 上传打包文件
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
           path: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
-
 
       - name: 创建 Release
         uses: softprops/action-gh-release@v2
