@@ -40,23 +40,6 @@ jobs:
           files: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
           tag_name: 01-Dark-Mode
           body: 01-Dark-Mode
-  deploy:
-    if: "contains(github.event.head_commit.message, '01')"
-    concurrency: ci-${{ github.ref }}
-    needs: [ build-01 ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v4
 
-      - name: Download Artifacts 🔻
-        uses: actions/download-artifact@v4
-        with:
-          name: electron-dark-mode
-
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: 'electron-dark-mode'
 
 
