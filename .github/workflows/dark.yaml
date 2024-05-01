@@ -16,8 +16,9 @@ jobs:
           node-version: '16'
 
       - name: Install Dependencies
-        run: npm install
-
+        run: |
+          cd 01-Dark-Mode
+          npm install
       - name: Install electron-forge globally
         run: npm install -g electron-forge
 
