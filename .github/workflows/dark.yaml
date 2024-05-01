@@ -11,46 +11,27 @@ jobs:
     steps:
       - name: 导入代码
         uses: actions/checkout@v4
-
       - name: 准备Node环境
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-
       - name: 安装依赖
         run: |
           cd 01-Dark-Mode
           npm install
-
       - name: 打包应用
         run: |
           cd 01-Dark-Mode
           npm run make
-
       - name: 上传打包文件
         uses: actions/upload-artifact@v4
         with:
-          name: electron-dark-mode
-          path: 01-Dark-Mode/out
-
-  deploy:
-    if: "contains(github.event.head_commit.message, '01')"
-    concurrency: ci-${{ github.ref }}
-    needs: [ build-01 ]
-    runs-on: ubuntu-latest
-    steps:
-      - name: 导入代码 🛎️
-        uses: actions/checkout@v4
-
-      - name: 下载打包文件 🔻
-        uses: actions/download-artifact@v4
+          name: dark-mode
+          path: 01-Dark-Mode/out/dark-mode-win32-x64
+      - name: 创建 Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: electron-dark-mode
+          files: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
 
-      - name: 部署 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dark-mode-win32-x64
 
 
