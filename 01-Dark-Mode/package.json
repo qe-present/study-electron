@@ -9,9 +9,9 @@
     "make": "electron-forge make"
   },
   "author": "qe",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.4.0",

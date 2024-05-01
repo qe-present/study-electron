@@ -13,17 +13,15 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version: '20.x'
 
       - name: Install Dependencies
         run: |
           cd 01-Dark-Mode
           npm install
-      - name: Install electron-forge globally
-        run: npm install -g electron-forge
-
-      - name: Run electron-forge make
-        run: electron-forge make
+        
+      - name: Build Electron App
+        run: npm run build
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
