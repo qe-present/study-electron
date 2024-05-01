@@ -12,6 +12,7 @@ jobs:
       - name: 测试跳过
         run: node -v
   success:
+    if: "contains(github.event.head_commit.message, 'skip ci')"
     name: 成功
     runs-on: ubuntu-latest
     needs: test
