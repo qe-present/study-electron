@@ -30,6 +30,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
-          path: 01-Dark-Mode/out/make/**/*.*
+          path: 01-Dark-Mode/out/**/*.*
 
 
