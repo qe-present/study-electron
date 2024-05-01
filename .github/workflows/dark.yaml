@@ -27,17 +27,11 @@ jobs:
           cd 01-Dark-Mode
           npm run make
 
-      - name: 部署到新的分支 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: 01-Dark-Mode/out/dark-mode-win32-x64
-          branch: 01-build
-
       - name: 上传打包文件
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
-          path: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
+          path: 01-Dark-Mode/out
 
 
       - name: 创建 Release
@@ -46,5 +40,23 @@ jobs:
           files: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
           tag_name: 01-Dark-Mode
           body: 01-Dark-Mode
+  deploy:
+    if: "contains(github.event.head_commit.message, '01')"
+    concurrency: ci-${{ github.ref }}
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
+
+      - name: Download Artifacts 🔻
+        uses: actions/download-artifact@v4
+        with:
+          name: electron-dark-mode
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'electron-dark-mode'
 
 
