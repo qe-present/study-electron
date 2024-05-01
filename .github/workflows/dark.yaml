@@ -12,6 +12,5 @@ jobs:
       - name: 导入代码
         uses: actions/checkout@v4
       - name: 安装和配置 rsync
-      - name: Install rsync
         run: |
             choco install rsync -y
