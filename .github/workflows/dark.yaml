@@ -4,42 +4,21 @@ permissions:
   contents: write
 
 jobs:
-
-  build:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    name: 打包 Electron 应用
-    runs-on: windows-latest
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-
-      - name: Install Dependencies
-        run: |
-          cd 01-Dark-Mode
-          npm install
-
-      - name: Build Electron App
-
-        run: |
-          cd 01-Dark-Mode
-          npm run package
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: electron-dark-mode
-          path: 01-Dark-Mode/out/**/*.*
   test:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: 测试跳过
     runs-on: ubuntu-latest
     steps:
-      - name: Download Artifacts
+      - name: 测试跳过
         run: node -v
+  success:
+    name: 成功
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: 成功
+        run: echo "成功"
+
 
 
 
