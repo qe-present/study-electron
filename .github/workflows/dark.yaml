@@ -39,15 +39,17 @@ jobs:
     needs: [ build-01 ]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: 导入代码 🛎️
         uses: actions/checkout@v4
 
-      - name: Download Artifacts 🔻
+      - name: 下载打包文件 🔻
         uses: actions/download-artifact@v4
+        run: |
+          pwd
         with:
           name: electron-dark-mode
 
-      - name: Deploy 🚀
+      - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: 'electron-dark-mode'
