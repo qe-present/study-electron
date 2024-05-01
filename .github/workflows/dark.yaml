@@ -35,7 +35,7 @@ jobs:
       - name: 创建 Release
         uses: softprops/action-gh-release@v2
         with:
-          files: 01-Dark-Mode/out/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
+          files: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
           tag_name: 01-Dark-Mode
 
 
