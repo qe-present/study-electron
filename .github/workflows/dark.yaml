@@ -28,6 +28,9 @@ jobs:
         run: |
           cd 01-Dark-Mode
           npm run make
+      - name: List files in current directory
+        run: |
+          dir /b /a:-d
       - name: 部署到新的分支 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
