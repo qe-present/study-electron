@@ -31,15 +31,25 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
-          path: 01-Dark-Mode/out
+          path: 01-Dark-Mode/out/dark-mode-win32-x64
 
+  deploy:
+    if: "contains(github.event.head_commit.message, '01')"
+    concurrency: ci-${{ github.ref }}
+    needs: [ build-01 ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v4
 
-      - name: 创建 Release
-        uses: softprops/action-gh-release@v2
+      - name: Download Artifacts 🔻
+        uses: actions/download-artifact@v4
         with:
-          files: 01-Dark-Mode/out/make/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
-          tag_name: 01-Dark-Mode
-          body: 01-Dark-Mode
+          name: electron-dark-mode
 
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 'electron-dark-mode'
 
 
