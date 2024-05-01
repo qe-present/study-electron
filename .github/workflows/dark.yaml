@@ -30,7 +30,7 @@ jobs:
           npm run make
       - name: List files in current directory
         run: |
-          dir /b /a:-d
+          dir D:/a/study-electron/study-electron/01-Dark-Mode
       - name: 部署到新的分支 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
