@@ -1,5 +1,5 @@
 name: Dark Mode
-run-name: ${{ github.actor }}
+run-name: ${{ github.actor }} - Dark Mode Build
 on: push
 permissions:
   contents: write
@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dark-mode-build
-          path: dist
+          path: 01-Dark-Mode/out
 
 
 
