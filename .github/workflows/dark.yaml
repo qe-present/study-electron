@@ -21,7 +21,10 @@ jobs:
           npm install
 
       - name: Build Electron App
-        run: npm run make
+
+        run: |
+          cd 01-Dark-Mode
+          npm run make
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
