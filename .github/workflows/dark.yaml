@@ -4,7 +4,10 @@ permissions:
   contents: write
 
 jobs:
+
   build:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    name: 打包 Electron 应用
     runs-on: windows-latest
     steps:
       - name: Checkout source code
@@ -31,5 +34,16 @@ jobs:
         with:
           name: electron-dark-mode
           path: 01-Dark-Mode/out/**/*.*
+  test:
+    name: 测试跳过
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifacts
+        run: node -v
+
+
+
+
+
 
 
