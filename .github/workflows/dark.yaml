@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
-          path: 01-Dark-Mode/out/dark-mode-win32-x64
+          path: 01-Dark-Mode/out
 
   deploy:
     if: "contains(github.event.head_commit.message, '01')"
@@ -44,15 +44,13 @@ jobs:
 
       - name: 下载打包文件 🔻
         uses: actions/download-artifact@v4
-        run: |
-          pwd
-          ls
         with:
           name: electron-dark-mode
 
       - name: 部署 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: 'electron-dark-mode'
+          branch: gh-pages
+          folder: dark-mode-win32-x64
 
 
