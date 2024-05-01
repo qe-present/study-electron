@@ -5,7 +5,6 @@ permissions:
 
 jobs:
   test:
-    if: "!contains(github.event.head_commit.message, 'skip ci')"
     name: 测试跳过
     runs-on: ubuntu-latest
     steps:
