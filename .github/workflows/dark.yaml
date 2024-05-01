@@ -4,8 +4,7 @@ permissions:
   contents: write
 
 jobs:
-
-  build:
+  build-01:
     if: "contains(github.event.head_commit.message, '01')"
     name: 打包 Electron 应用
     runs-on: windows-latest
@@ -33,18 +32,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: electron-dark-mode
-          path: 01-Dark-Mode/out/**/*.*
-  test:
-    if: "!contains(github.event.head_commit.message, '01')"
-    name: 测试跳过
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifacts
-        run: node -v
-
-
-
-
-
-
+          path: 01-Dark-Mode/out/squirrel.windows/x64/dark-mode-1.0.0 Setup.exe
 

@@ -1,6 +1,7 @@
-const { app, BrowserWindow } = require('electron/main')
+const { app, BrowserWindow, ipcMain,nativeTheme  } = require('electron/main')
 const path = require('node:path')
-
+if (require('electron-squirrel-startup'))
+    app.quit();
 function createWindow () {
     const win = new BrowserWindow({
         width: 800,
@@ -11,6 +12,17 @@ function createWindow () {
     })
     win.loadFile(path.join(__dirname, 'index.html'))
 }
+ipcMain.handle('toggle', () => {
+    if (nativeTheme.shouldUseDarkColors) {
+        nativeTheme.themeSource = 'light'
+    } else {
+        nativeTheme.themeSource = 'dark'
+    }
+    return nativeTheme.shouldUseDarkColors
+})
+ipcMain.handle('system', () => {
+    nativeTheme.themeSource = 'system'
+})
 
 app.whenReady().then(() => {
     createWindow()
@@ -27,3 +39,4 @@ app.on('window-all-closed', () => {
         app.quit()
     }
 })
+
