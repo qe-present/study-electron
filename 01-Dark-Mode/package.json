@@ -1,7 +1,7 @@
 {
   "name": "01-dark-mode",
   "version": "1.0.0",
-  "description": "",
+  "description": "01-Dark-Mode",
   "main": "src/main.js",
   "scripts": {
     "start": "electron-forge start",
