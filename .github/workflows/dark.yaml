@@ -18,7 +18,10 @@ jobs:
     needs: test
     steps:
       - name: 成功
-        run: echo "成功"
+        run: |
+          node -v
+          pwd
+          
 
 
 
