@@ -5,7 +5,7 @@ permissions:
 
 jobs:
   build-01:
-    if: "contains(github.event.head_commit.message, '03')"
+    if: "contains(github.event.head_commit.message, '04')"
     name: 打包 Electron 04-应用
     runs-on: windows-latest
     steps:
