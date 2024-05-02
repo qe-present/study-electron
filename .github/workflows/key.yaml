@@ -6,7 +6,7 @@ permissions:
 jobs:
   build-01:
     if: "contains(github.event.head_commit.message, '02')"
-    name: 打包 Electron 应用
+    name: 打包 Electron 02-应用
     runs-on: windows-latest
     steps:
       - name: 导入代码
