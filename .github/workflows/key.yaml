@@ -19,7 +19,7 @@ jobs:
 
       - name: 安装依赖
         run: |
-          cd 01-Dark-Mode
+          cd 02-keyboard-shortcuts
           npm install
       - name: 打包应用
         run: |
