@@ -1,18 +1,22 @@
-const { app, BrowserWindow, ipcMain,nativeTheme  } = require('electron/main')
+const {app, BrowserWindow, ipcMain, nativeTheme} = require('electron/main')
 const path = require('node:path')
+let icon = path.join(__dirname, '../../public/qe.ico');
 if (require('electron-squirrel-startup'))
     app.quit();
-function createWindow () {
+
+function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
+        icon: icon,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     })
     win.loadFile(path.join(__dirname, 'index.html'))
 }
-ipcMain.handle('toggle', () => {
+
+ipcMain.handle('toggleTheme', () => {
     if (nativeTheme.shouldUseDarkColors) {
         nativeTheme.themeSource = 'light'
     } else {
@@ -20,7 +24,7 @@ ipcMain.handle('toggle', () => {
     }
     return nativeTheme.shouldUseDarkColors
 })
-ipcMain.handle('system', () => {
+ipcMain.on('systemTheme', () => {
     nativeTheme.themeSource = 'system'
 })
 

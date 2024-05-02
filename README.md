@@ -3,6 +3,6 @@
 # 官网示例网址如下
 https://www.electronjs.org/zh/docs/latest/tutorial/examples
 # 代码
-代码经过简单修改。
+代码经过简单修改,使用electron-forge、vite、vue等技术进行构建
 # 打包
 每个示例项目使用electron-forge进行打包

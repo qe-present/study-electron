@@ -8,8 +8,8 @@ document.getElementById('toggle-dark-mode').addEventListener(
 
 document.getElementById('reset-to-system').addEventListener(
     'click',
-    async () => {
-        await window.ipcRenderer.system()
+     () => {
+         window.ipcRenderer.system()
         document.getElementById('theme-source').innerHTML = 'System'
     }
 );

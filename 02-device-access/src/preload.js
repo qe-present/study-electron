@@ -1,7 +1,4 @@
-const { contextBridge, ipcRenderer } = require('electron/renderer')
-
+import {contextBridge, ipcRenderer} from 'electron';
 contextBridge.exposeInMainWorld('ipcRenderer', {
-    cancelBluetoothRequest: () => ipcRenderer.send('cancel-bluetooth-request'),
-    bluetoothPairingRequest: (callback) => ipcRenderer.on('bluetooth-pairing-request', () => callback()),
-    bluetoothPairingResponse: (response) => ipcRenderer.send('bluetooth-pairing-response', response)
-})
+    'bluetoothPairingRequest': (callback) => ipcRenderer.on('bluetooth-pairing-request',() => callback),
+});

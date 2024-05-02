@@ -1,11 +1,11 @@
 const {contextBridge, ipcRenderer} = require('electron')
 contextBridge.exposeInMainWorld(
     'ipcRenderer',{
-        'toggle': () => {
-            ipcRenderer.invoke('toggle')
+        'toggle': async () => {
+            return await ipcRenderer.invoke('toggleTheme')
         },
         'system': () => {
-            ipcRenderer.invoke('system')
+            ipcRenderer.send('systemTheme')
         }
     }
 )
