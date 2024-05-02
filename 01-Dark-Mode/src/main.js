@@ -1,6 +1,6 @@
 const {app, BrowserWindow, ipcMain, nativeTheme} = require('electron/main')
 const path = require('node:path')
-let icon = path.join(__dirname, '../../public/qe.ico');
+
 if (require('electron-squirrel-startup'))
     app.quit();
 
@@ -8,7 +8,7 @@ function createWindow() {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
-        icon: icon,
+        icon: path.join(__dirname, '../../public/qe.ico'),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }

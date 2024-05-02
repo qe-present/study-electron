@@ -1,12 +1,14 @@
 const {FusesPlugin} = require('@electron-forge/plugin-fuses');
 const {FuseV1Options, FuseVersion} = require('@electron/fuses');
+const path = require('node:path')
+let icoPath = path.join(__dirname, '../public/qe.ico')
 
 module.exports = {
     packagerConfig: {
         asar: true,
         name: 'dark-mode',
-        icon: './public/qe.ico',
-        setupIcon: './public/qe.ico',
+        icon: path.join(__dirname, '../public/qe.ico'),
+        setupIcon: path.join(__dirname, '../public/qe.ico'),
         win:{
             target: [
                 {
@@ -30,8 +32,8 @@ module.exports = {
             name: '@electron-forge/maker-squirrel',
             config: {
                 name: 'dark-mode',
-                icon: './public/qe.ico',
-                setupIcon: './public/qe.ico',
+                icon: icoPath,
+                setupIcon: icoPath
             },
         },
         {
