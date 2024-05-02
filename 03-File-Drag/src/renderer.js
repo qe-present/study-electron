@@ -1,9 +1,11 @@
-document.getElementById('drag1').ondragstart = (event) => {
+document.getElementById('drag1').ondragstart = async (event) => {
     event.preventDefault()
-    window.ipcRenderer.startDrag('文件1.md')
+    let res = await window.electron.startDrag('1.md')
+    console.log(res)
 }
 
-document.getElementById('drag2').ondragstart = (event) => {
+document.getElementById('drag2').ondragstart = async (event) => {
     event.preventDefault()
-    window.ipcRenderer.startDrag('文件2.md')
+    let res = await window.electron.startDrag('2.md')
+    console.log(res)
 }
