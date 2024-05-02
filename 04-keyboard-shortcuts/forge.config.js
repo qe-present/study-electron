@@ -1,15 +1,43 @@
 const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+const path = require("node:path");
+console.log(__dirname);
+const icoPath = path.join(__dirname, '../public/qe.ico');
 
 module.exports = {
   packagerConfig: {
     asar: true,
+    name: 'keyboard-shortcuts',
+    icon: icoPath,
+    setupIcon: icoPath,
+    win:{
+      target: [
+        {
+          target: 'nsis',
+          arch: [
+            'x64',
+          ],
+          options: {
+            perMachine: true,
+            allowToChangeInstallationDirectory: true,
+            createDesktopShortcut: true,
+            deleteAppDataOnUninstall: true,
+            defaultInstallLocation: '$PROGRAMFILES', // 设置默认安装路径
+          }
+        },
+      ],
+    }
+
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        name: 'keyboard-shortcuts',
+        icon: icoPath,
+        setupIcon: icoPath
+      },
     },
     {
       name: '@electron-forge/maker-zip',

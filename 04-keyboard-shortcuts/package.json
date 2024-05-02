@@ -1,6 +1,6 @@
 {
-  "name": "02-device-access",
-  "productName": "02-device-access",
+  "name": "04-keyboard-shortcuts",
+  "productName": "04-keyboard-shortcuts",
   "version": "1.0.0",
   "description": "My Electron application description",
   "main": "src/index.js",
@@ -20,7 +20,7 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron/fuses": "^1.8.0",
-    "electron": "30.0.1"
+    "electron": "30.0.2"
   },
   "keywords": [],
   "author": {

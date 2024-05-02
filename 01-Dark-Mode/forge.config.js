@@ -20,6 +20,7 @@ module.exports = {
                         perMachine: true,
                         allowToChangeInstallationDirectory: true,
                         createDesktopShortcut: true,
+                        deleteAppDataOnUninstall: true,
                         defaultInstallLocation: '$PROGRAMFILES', // 设置默认安装路径
                     }
                 },
