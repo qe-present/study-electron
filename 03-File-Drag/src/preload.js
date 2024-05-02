@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require('electron/renderer')
+const { contextBridge, ipcRenderer } = require('electron/renderer.js')
 
 contextBridge.exposeInMainWorld('electron', {
     startDrag: async (fileName) => {
