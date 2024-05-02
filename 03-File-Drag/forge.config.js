@@ -6,7 +6,7 @@ const icoPath = path.join(__dirname, '../public/qe.ico');
 module.exports = {
   packagerConfig: {
     asar: true,
-    name: 'keyboard-shortcuts',
+    name: 'File-Drag',
     icon: icoPath,
     setupIcon: icoPath,
     win:{
@@ -26,16 +26,16 @@ module.exports = {
         },
       ],
     }
-
   },
   rebuildConfig: {},
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        name: 'keyboard-shortcuts',
+        name: 'File-Drag',
         icon: icoPath,
         setupIcon: icoPath
+
       },
     },
     {

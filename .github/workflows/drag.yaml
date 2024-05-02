@@ -1,0 +1,40 @@
+name: 打包 03
+on: push
+permissions:
+  contents: write
+
+jobs:
+  build-01:
+    if: "contains(github.event.head_commit.message, '03')"
+    name: 打包 Electron 03-应用
+    runs-on: windows-latest
+    steps:
+      - name: 导入代码
+        uses: actions/checkout@v4
+
+      - name: 准备Node环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: 安装依赖
+        run: |
+          cd 03-File-Drag
+          npm install
+      - name: 打包应用
+        run: |
+          cd 03-File-Drag
+          npm run make
+
+      - name: 上传打包文件
+        uses: actions/upload-artifact@v4
+        with:
+          name: electron
+          path: 03-File-Drag/out/make/squirrel.windows/x64/File-Drag-1.0.0 Setup.exe
+
+      - name: 创建 Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: 03-File-Drag/out/make/squirrel.windows/x64/File-Drag-1.0.0 Setup.exe
+          tag_name: 03-File-Drag
+          body: 03-File-Drag
